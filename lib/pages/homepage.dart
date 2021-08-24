@@ -45,12 +45,18 @@ class _HomePageState extends State<HomePage> {
                                   fit: BoxFit.cover),
                             ),
                           ),
+                          SizedBox(
+                            width: 16,
+                          ),
                           Flexible(
                             child: Column(
                               children: <Widget>[
                                 Text(
                                   article.title,
                                   overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   article.description,
