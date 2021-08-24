@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final newsModel = newsModelFromJson(jsonString);
-
 import 'dart:convert';
 
 NewsModel newsModelFromJson(String str) => NewsModel.fromJson(json.decode(str));
@@ -56,7 +52,7 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
         source: Source.fromJson(json["source"]),
-        author: json["author"],
+        author: json["author"] == null ? null : json["author"],
         title: json["title"],
         description: json["description"],
         url: json["url"],
@@ -67,7 +63,7 @@ class Article {
 
   Map<String, dynamic> toJson() => {
         "source": source.toJson(),
-        "author": author,
+        "author": author == null ? null : author,
         "title": title,
         "description": description,
         "url": url,
@@ -97,13 +93,15 @@ class Source {
       };
 }
 
-enum Id { TECHCRUNCH }
+enum Id { THE_WALL_STREET_JOURNAL }
 
-final idValues = EnumValues({"techcrunch": Id.TECHCRUNCH});
+final idValues =
+    EnumValues({"the-wall-street-journal": Id.THE_WALL_STREET_JOURNAL});
 
-enum Name { TECH_CRUNCH }
+enum Name { THE_WALL_STREET_JOURNAL }
 
-final nameValues = EnumValues({"TechCrunch": Name.TECH_CRUNCH});
+final nameValues =
+    EnumValues({"The Wall Street Journal": Name.THE_WALL_STREET_JOURNAL});
 
 class EnumValues<T> {
   Map<String, T> map;
